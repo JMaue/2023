@@ -8,9 +8,8 @@ namespace AoC2023
   {
     private static byte _zero = Convert.ToByte('0');
 
-    public void Solve1()
+    public void Solve1(string[] allLines)
     {
-      var allLines = File.ReadAllLines(@"D:\Jens\Repositories\AdventOfCode\2023\Input_1.txt");
       long sum = 0;
       foreach (var line in allLines)
       {
@@ -21,9 +20,8 @@ namespace AoC2023
       Console.WriteLine($"Task1: {sum}");
     }
 
-    public void Solve2()
+    public void Solve2(string[] allLines)
     {
-      var allLines = File.ReadAllLines(@"D:\Jens\Repositories\AdventOfCode\2023\Input_1.txt");
       long sum = 0;
       foreach (var line in allLines)
       {

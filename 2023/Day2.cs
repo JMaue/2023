@@ -1,12 +1,5 @@
-﻿using AoC2023;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
 
 namespace AoC2023
 {
@@ -59,9 +52,8 @@ namespace AoC2023
 
   internal class Day2 : ISolver
   {
-    public void Solve1()
+    public void Solve1(string[] allLines)
     {
-      var allLines = File.ReadAllLines(@"D:\Jens\Repositories\AdventOfCode\2023\Input_2.txt");
       long sum = 0;
       foreach (var line in allLines)
       {
@@ -91,9 +83,8 @@ namespace AoC2023
       return 0;
     }
 
-    public void Solve2()
+    public void Solve2(string[] allLines)
     {
-      Console.WriteLine($"Task2: {' '}"); var allLines = File.ReadAllLines(@"D:\Jens\Repositories\AdventOfCode\2023\Input_2.txt");
       long sum = 0;
       foreach (var line in allLines)
       {
