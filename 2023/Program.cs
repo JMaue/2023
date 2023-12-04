@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace AoC2023
@@ -14,8 +13,8 @@ namespace AoC2023
   {
     static void Main(string[] args)
     {
-      ISolver solver = new Day3();
-      var allLines = File.ReadAllLines(@"..\..\..\Input_3.txt");
+      ISolver solver = new Day4();
+      var allLines = File.ReadAllLines(@"..\..\..\Input_4.txt");
       solver.Solve1(allLines);  
       solver.Solve2(allLines);
       Console.ReadKey();
