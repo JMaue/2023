@@ -6,6 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{46070262-2847-429D-800B-BB2F7B6487EF}</ProjectGuid>
     <OutputType>Exe</OutputType>
+    <LangVersion>preview</LangVersion>
     <RootNamespace>AoC2023</RootNamespace>
     <AssemblyName>2023</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -44,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Day1.cs" />
+    <Compile Include="Day10.cs" />
+    <Compile Include="Day11.cs" />
     <Compile Include="Day2.cs" />
     <Compile Include="Day6.cs" />
     <Compile Include="Day5.cs" />

@@ -13,9 +13,9 @@ namespace AoC2023
   {
     static void Main(string[] args)
     {
-      ISolver solver = new Day9();
+      ISolver solver = new Day8();
 
-      var allLines = File.ReadAllLines(@"..\..\..\Input_9.txt");
+      var allLines = File.ReadAllLines(@"..\..\..\Input_8.txt");
       solver.Solve1(allLines);  
       solver.Solve2(allLines);
       Console.ReadKey();

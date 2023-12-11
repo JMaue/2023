@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace AoC2023
 {
@@ -77,40 +74,58 @@ namespace AoC2023
 
       Dictionary<string, Node> nodes = ReadInput(lines);
       var ghostStartNodes = nodes.Values.Where(x => x.Key.EndsWith("A")).ToList();
-      var ghostNodes = new List<Node>();
-      ghostNodes.AddRange(ghostStartNodes); ;
-      var noOfSteps = 0;
-      bool found = false;
-      while (!found)
+      var cycles = new List<long>();
+      foreach (var ghostStartNode in ghostStartNodes)
       {
-        for (int i = 0; i < directions.Length; i++)
+        Console.Write($"{ghostStartNode.Key}");
+        var node = ghostStartNode;
+        var noOfSteps = 0;
+        bool found = false;
+        while (!found)
         {
-          var nextGhostNodes = new List<Node>();
-          foreach (var ghostNode in ghostNodes)
+          for (int i = 0; i < directions.Length; i++)
           {
-            var nextNode = directions[i] == 'L' ? ghostNode.Left : ghostNode.Right;
-            nextGhostNodes.Add(nextNode);
-          }
-          ghostNodes = nextGhostNodes;
+            node = directions[i] == 'L' ? node.Left : node.Right;
 
-          if (ghostNodes.All (gn => gn.Key.EndsWith ("Z")))
-          {
-            noOfSteps += i + 1;
-            found = true;
-            break;
+            if (node.Key.EndsWith ("Z"))
+            {
+              noOfSteps += i + 1;
+              found = true;
+              cycles.Add(noOfSteps);
+              Console.WriteLine($"{ghostStartNode.Key}  {noOfSteps} steps");
+            }
           }
-          else
+          if (!found)
           {
-            //Console.WriteLine($"{string.Join("", ghostNodes.Select(gn => gn.Key[2]))}");
+            noOfSteps += directions.Length;
+            Console.Write(".");
           }
-        }
-        if (!found)
-        {
-          noOfSteps += directions.Length;
-          Console.WriteLine($"Steps: {noOfSteps}");
         }
       }
-      Console.WriteLine($"Task2: {noOfSteps}");
+
+      var result = MathHelpers.LeastCommonMultiple(cycles);
+      Console.WriteLine($"Task2: {result}");
     }
+  }
+
+  public static class MathHelpers
+  {
+    public static long GreatestCommonDivisor(long a, long b)
+    {
+      while (b != 0)
+      {
+        var temp = b;
+        b = a % b;
+        a = temp;
+      }
+
+      return a;
+    }
+
+    public static long LeastCommonMultiple(long a, long b)
+        => a / GreatestCommonDivisor(a, b) * b;
+
+    public static long LeastCommonMultiple(this IEnumerable<long> values)
+        => values.Aggregate(LeastCommonMultiple);
   }
 }
